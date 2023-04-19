@@ -11,11 +11,6 @@ const fs = require('fs');
 let database = null;
 const collectionName = "measurements";
 
-//let ms = Date.now()
-//let ms = new Date()
-var today = new Date()
-var ms = today.toLocaleString()
-
 async function startDatabase() {
 //    const mongod = await MongoMemoryServer.create();
     const uri = "mongodb://localhost:27017/?maxPoolSize=20&w=majority";	
@@ -47,8 +42,8 @@ app.use('/js', express.static('spa'));
 const PORT = 8080;
 
 app.post('/measurement', function (req, res) {
--       console.log("Timestamp: " + ms + "   device id : " + req.body.id + "   key : " + req.body.key + "   temperature : " + req.body.t + "   preassure : " + req.body.p);	
-    const {insertedId} = insertMeasurement({timestamp:ms, id:req.body.id, key:req.body.key, t:req.body.t, p:req.body.p});
+-       console.log("device id    : " + req.body.id + " key         : " + req.body.key + " temperature : " + req.body.t + " humidity    : " + req.body.h);	
+    const {insertedId} = insertMeasurement({id:req.body.id, t:req.body.t, h:req.body.h});
 	res.send("received measurement into " +  insertedId);
 });
 

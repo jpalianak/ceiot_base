@@ -27,9 +27,9 @@
 // #define USER_AGENT    "esp-idf/1.0 esp32c3"
 
 // esp32-bmp280 
-// #define SDA_GPIO     21
-// #define SCL_GPIO     22
-// #define USER_AGENT   "esp-idf/1.0 esp32c3""
+#define SDA_GPIO     21
+#define SCL_GPIO     22
+#define USER_AGENT   "esp-idf/1.0 esp32c3"
 
 
 #define _config_
