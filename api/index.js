@@ -13,8 +13,7 @@ const collectionName = "measurements";
 
 //let ms = Date.now()
 //let ms = new Date()
-var today = new Date()
-var ms = today.toLocaleString()
+
 
 async function startDatabase() {
 //    const mongod = await MongoMemoryServer.create();
@@ -44,11 +43,14 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static('spa'));
 app.use('/js', express.static('spa'));
 
+//var today = new Date()
+//var ms = today.toLocaleString()
+
 const PORT = 8080;
 
 app.post('/measurement', function (req, res) {
--       console.log("Timestamp: " + ms + "   device id : " + req.body.id + "   key : " + req.body.key + "   temperature : " + req.body.t + "   preassure : " + req.body.p);	
-    const {insertedId} = insertMeasurement({timestamp:ms, id:req.body.id, key:req.body.key, t:req.body.t, p:req.body.p});
+       console.log("Timestamp: " + new Date() + "   device id : " + req.body.id + "   key : " + req.body.key + "   temperature : " + req.body.t + "   preassure : " + req.body.p);	
+    const {insertedId} = insertMeasurement({TimeStamp:new Date(), id:req.body.id, key:req.body.key, t:req.body.t, p:req.body.p});
 	res.send("received measurement into " +  insertedId);
 });
 

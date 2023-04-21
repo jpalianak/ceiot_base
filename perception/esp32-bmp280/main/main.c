@@ -30,6 +30,9 @@
 
 static const char *TAG = "temp_collector";
 
+//var today = new Date()
+//var ms = today.toLocaleString()
+
 //static char *BODY = "id="DEVICE_ID"&t=%0.2f&h=%0.2f";
 static char *BODY = "id="DEVICE_ID"&key="KEY"&t=%0.2f&p=%0.2f";
 
@@ -65,7 +68,7 @@ static void http_get_task(void *pvParameters)
 
     bool bme280p = dev.id == BME280_CHIP_ID;
     ESP_LOGI(TAG, "BMP280: found %s\n", bme280p ? "BME280" : "BMP280");
-
+    
     float pressure, temperature, humidity;
 
 
